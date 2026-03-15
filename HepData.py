@@ -130,18 +130,30 @@ expCLs_un1_minus_list = [0, 0.118129, 0.136162, 0.205414, 0.197477, 0.225843, 0.
 expCLs_un2_plus_list = [0.0521, 0.117121, 0.23179, 0.321631, 0.418111, 0.483513, 0.571027, 0.626288, 0.697125, 0.742879, 0.793497, 0.832499, 0.860769, 0.888711, 0.90191, 0.930993, 0.94742, 0.433781, 0.431801, 0.378642, 0.350234, 0.333967, 0.320574, 0.267879, 0.240937, 0.231227, 0.203721, 0.180729, 0.160933, 0.154308, 0.129105, 0.105578, 0.107478, 0.085706, 0.075436, 0.06815, 0.058302, 0.051041, 0.045574, 0.040215, 0.034689, 0.032844, 0.027731, 0.024619, 0.021851, 0.023386, 0.015759, 0.015861, 0.012893, 0.011411, 0.010333]
 expCLs_un2_minus_list = [0.124062, 0.286566, 0.232814, 0.331093, 0.298888, 0.321841, 0.263853, 0.288576, 0.233859, 0.202505, 0.182789, 0.153753, 0.129154, 0.091056, 0.09739, 0.059003, 0.046536, 0.044404, 0.034943, 0.027976, 0.022343, 0.014775, 0.012745, 0.009271, 0.009378, 0.005176, 0.004658, 0.003091, 0.004625, 0.003364, 0.002399, 0.002276, 0.002178, 0.00065, 0.000803, 0.000615, 0.000229, 0.000394, 0.000217, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
+expCLs_median_plus_unc1_list = [m + u for m, u in zip(expCLs_list, expCLs_un1_plus_list)]
+expCLs_median_minus_unc1_list = [m - u for m, u in zip(expCLs_list, expCLs_un1_minus_list)]
+expCLs_median_plus_unc2_list = [m + u for m, u in zip(expCLs_list, expCLs_un2_plus_list)]
+expCLs_median_minus_unc2_list = [m - u for m, u in zip(expCLs_list, expCLs_un2_minus_list)]
+
 expCLs = Variable("Expected CLs", is_independent=False, is_binned=False, units="")
 expCLs.values = expCLs_list
-
-expCLs_unc1 = Uncertainty("1 sigma", is_symmetric=False)
-expCLs_unc1.values = [(-m, p) for m, p in zip(expCLs_un1_minus_list, expCLs_un1_plus_list)]
-expCLs.add_uncertainty(expCLs_unc1)
-
-expCLs_unc2 = Uncertainty("2 sigma", is_symmetric=False)
-expCLs_unc2.values = [(-m, p) for m, p in zip(expCLs_un2_minus_list, expCLs_un2_plus_list)]
-expCLs.add_uncertainty(expCLs_unc2)
-
 table_2.add_variable(expCLs)
+
+expCLs_p1sig = Variable("Expected CLs + $1\sigma$", is_independent=False, is_binned=False, units="")
+expCLs_p1sig.values = expCLs_median_plus_unc1_list
+table_2.add_variable(expCLs_p1sig)
+
+expCLs_m1sig = Variable("Expected CLs - $1\sigma$", is_independent=False, is_binned=False, units="")
+expCLs_m1sig.values = expCLs_median_minus_unc1_list
+table_2.add_variable(expCLs_m1sig)
+
+expCLs_p2sig = Variable("Expected CLs + $2\sigma$", is_independent=False, is_binned=False, units="")
+expCLs_p2sig.values = expCLs_median_plus_unc2_list
+table_2.add_variable(expCLs_p2sig)
+
+expCLs_m2sig = Variable("Expected CLs - $2\sigma$", is_independent=False, is_binned=False, units="")
+expCLs_m2sig.values = expCLs_median_minus_unc2_list
+table_2.add_variable(expCLs_m2sig)
 
 # add table    
 submission.add_table(table_2)
@@ -177,18 +189,30 @@ expCLs_un1_minus_list = [0.000982, 0.047105, 0.079695, 0.123262, 0.155571, 0.178
 expCLs_un2_plus_list = [0.245417, 0.067464, 0.112492, 0.19958, 0.235819, 0.306817, 0.345271, 0.36649, 0.432176, 0.47323, 0.522704, 0.542245, 0.593709, 0.65353, 0.692612, 0.681123, 0.712241, 0.754349, 0.773223, 0.794123, 0.823464, 0.83345, 0.852499, 0.868121, 0.8885, 0.896993, 0.906889, 0.921223, 0.926657, 0.93865, 0.942142, 0.441113, 0.434514, 0.446578, 0.417869, 0.403078, 0.381483, 0.355628, 0.343482, 0.341574, 0.322355, 0.322294, 0.291204, 0.283821, 0.235995, 0.242928, 0.231464, 0.206026, 0.199383, 0.185104, 0.187825, 0.158848, 0.168972, 0.141072, 0.138663, 0.131786, 0.121914, 0.124633, 0.117089, 0.093228, 0.091191, 0.086832, 0.086988, 0.08454, 0.061431, 0.062333, 0.066426, 0.061932, 0.054252, 0.04857, 0.054544, 0.041898, 0.034653, 0.038426, 0.03561, 0.02666, 0.029064, 0.029204, 0.02666, 0.023853, 0.02486, 0.021794, 0.0175, 0.017696, 0.018008, 0.014222, 0.012488, 0.016067, 0.014326, 0.013304, 0.009009, 0.010945, 0.008902, 0.007522, 0.005733, 0.007467, 0.00594, 0.005732, 0.005378, 0.006805, 0.005115]
 expCLs_un2_minus_list = [0.008394, 0.245537, 0.191727, 0.20659, 0.276649, 0.309311, 0.217848, 0.319552, 0.270823, 0.345452, 0.276595, 0.323421, 0.305403, 0.294856, 0.251073, 0.254658, 0.221783, 0.215433, 0.191768, 0.181007, 0.165604, 0.150346, 0.136791, 0.12009, 0.10686, 0.101807, 0.09171, 0.071706, 0.064102, 0.05995, 0.056358, 0.054482, 0.042863, 0.034541, 0.034831, 0.036228, 0.022689, 0.022789, 0.025818, 0.017342, 0.013711, 0.013956, 0.013683, 0.011487, 0.006632, 0.009618, 0.009571, 0.005641, 0.007986, 0.004203, 0.004041, 0.00279, 0.002787, 0.002597, 0.001984, 0.001552, 0.002421, 0.001386, 0.002021, 0.001585, 0.001109, 0.0008, 0, 0.000597, 0.000738, 0.000803, 0.000607, 0.00059, 0, 0.000604, 0.000444, 0.000372, 0.000191, 0, 0, 0, 0, 0.000167, 0, 0, 0.000164, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.000147, 0, 0]
 
+expCLs_median_plus_unc1_list = [m + u for m, u in zip(expCLs_list, expCLs_un1_plus_list)]
+expCLs_median_minus_unc1_list = [m - u for m, u in zip(expCLs_list, expCLs_un1_minus_list)]
+expCLs_median_plus_unc2_list = [m + u for m, u in zip(expCLs_list, expCLs_un2_plus_list)]
+expCLs_median_minus_unc2_list = [m - u for m, u in zip(expCLs_list, expCLs_un2_minus_list)]
+
 expCLs = Variable("Expected CLs", is_independent=False, is_binned=False, units="")
 expCLs.values = expCLs_list
-
-expCLs_unc1 = Uncertainty("1 sigma", is_symmetric=False)
-expCLs_unc1.values = [(-m, p) for m, p in zip(expCLs_un1_minus_list, expCLs_un1_plus_list)]
-expCLs.add_uncertainty(expCLs_unc1)
-
-expCLs_unc2 = Uncertainty("2 sigma", is_symmetric=False)
-expCLs_unc2.values = [(-m, p) for m, p in zip(expCLs_un2_minus_list, expCLs_un2_plus_list)]
-expCLs.add_uncertainty(expCLs_unc2)
-
 table_3.add_variable(expCLs)
+
+expCLs_p1sig = Variable("Expected CLs + $1\sigma$", is_independent=False, is_binned=False, units="")
+expCLs_p1sig.values = expCLs_median_plus_unc1_list
+table_3.add_variable(expCLs_p1sig)
+
+expCLs_m1sig = Variable("Expected CLs - $1\sigma$", is_independent=False, is_binned=False, units="")
+expCLs_m1sig.values = expCLs_median_minus_unc1_list
+table_3.add_variable(expCLs_m1sig)
+
+expCLs_p2sig = Variable("Expected CLs + $2\sigma$", is_independent=False, is_binned=False, units="")
+expCLs_p2sig.values = expCLs_median_plus_unc2_list
+table_3.add_variable(expCLs_p2sig)
+
+expCLs_m2sig = Variable("Expected CLs - $2\sigma$", is_independent=False, is_binned=False, units="")
+expCLs_m2sig.values = expCLs_median_minus_unc2_list
+table_3.add_variable(expCLs_m2sig)
 
 # add table    
 submission.add_table(table_3)
@@ -224,18 +248,30 @@ expCLs_un1_minus_list = [0.024819, 0.047472, 0.077817, 0.129446, 0.186848, 0.205
 expCLs_un2_plus_list = [0.005984, 0.072699, 0.132099, 0.229447, 0.270945, 0.311918, 0.41056, 0.434077, 0.514909, 0.550109, 0.593746, 0.635498, 0.663862, 0.718499, 0.745027, 0.783165, 0.788463, 0.81909, 0.837059, 0.868438, 0.87894, 0.88861, 0.901962, 0.909083, 0.924648, 0.942805, 0.947015, 0.956855, 0.440137, 0.433564, 0.411822, 0.403695, 0.366689, 0.356963, 0.350549, 0.347113, 0.300782, 0.295805, 0.288451, 0.273491, 0.25104, 0.252073, 0.225568, 0.202419, 0.196734, 0.184992, 0.178705, 0.168622, 0.176514, 0.154694, 0.143179, 0.132099, 0.121782, 0.121226, 0.120754, 0.109811, 0.098454, 0.093482, 0.086062, 0.08251, 0.071884, 0.074441, 0.071626, 0.067741, 0.056698, 0.054984, 0.046592, 0.055702, 0.048331, 0.042832, 0.041189, 0.036943, 0.036124, 0.029581, 0.034839, 0.025065, 0.024165, 0.027329, 0.022203, 0.021336, 0.018883, 0.021847, 0.016932, 0.015709, 0.018108, 0.017448, 0.013818, 0.014427, 0.012436, 0.010338, 0.010537, 0.011111, 0.007872, 0.008139, 0.007365, 0.008699, 0.006396, 0.006855, 0.005525, 0.005275, 0.00655]
 expCLs_un2_minus_list = [0.060495, 0.096034, 0.165573, 0.286762, 0.32168, 0.351946, 0.346649, 0.296028, 0.351132, 0.282523, 0.286906, 0.285271, 0.260939, 0.227053, 0.210949, 0.194609, 0.190464, 0.173731, 0.155784, 0.109506, 0.107098, 0.097437, 0.089476, 0.078527, 0.071262, 0.054184, 0.051885, 0.037482, 0.046623, 0.044996, 0.027748, 0.030276, 0.025176, 0.022993, 0.018049, 0.016818, 0.012649, 0.013771, 0.011945, 0.00746, 0.008752, 0.00642, 0.007748, 0.005835, 0.006031, 0.00455, 0.003189, 0.003275, 0.003391, 0.001823, 0.002991, 0.001799, 0.002141, 0.000971, 0.000647, 0.000958, 0.000609, 0.001327, 0.000516, 0.000589, 0.00113, 0.000677, 0.000422, 0.000516, 0.000603, 0.000428, 0.000434, 0.000187, 0.000177, 0.000253, 0, 0, 0, 0, 0, 0.000202, 0.000184, 0.0002, 0, 0.000205, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.000157, 0.000144, 0.000266, 0, 0, 0, 0.000155, 0, 0, 0, 0]
 
+expCLs_median_plus_unc1_list = [m + u for m, u in zip(expCLs_list, expCLs_un1_plus_list)]
+expCLs_median_minus_unc1_list = [m - u for m, u in zip(expCLs_list, expCLs_un1_minus_list)]
+expCLs_median_plus_unc2_list = [m + u for m, u in zip(expCLs_list, expCLs_un2_plus_list)]
+expCLs_median_minus_unc2_list = [m - u for m, u in zip(expCLs_list, expCLs_un2_minus_list)]
+
 expCLs = Variable("Expected CLs", is_independent=False, is_binned=False, units="")
 expCLs.values = expCLs_list
-
-expCLs_unc1 = Uncertainty("1 sigma", is_symmetric=False)
-expCLs_unc1.values = [(-m, p) for m, p in zip(expCLs_un1_minus_list, expCLs_un1_plus_list)]
-expCLs.add_uncertainty(expCLs_unc1)
-
-expCLs_unc2 = Uncertainty("2 sigma", is_symmetric=False)
-expCLs_unc2.values = [(-m, p) for m, p in zip(expCLs_un2_minus_list, expCLs_un2_plus_list)]
-expCLs.add_uncertainty(expCLs_unc2)
-
 table_4.add_variable(expCLs)
+
+expCLs_p1sig = Variable("Expected CLs + $1\sigma$", is_independent=False, is_binned=False, units="")
+expCLs_p1sig.values = expCLs_median_plus_unc1_list
+table_4.add_variable(expCLs_p1sig)
+
+expCLs_m1sig = Variable("Expected CLs - $1\sigma$", is_independent=False, is_binned=False, units="")
+expCLs_m1sig.values = expCLs_median_minus_unc1_list
+table_4.add_variable(expCLs_m1sig)
+
+expCLs_p2sig = Variable("Expected CLs + $2\sigma$", is_independent=False, is_binned=False, units="")
+expCLs_p2sig.values = expCLs_median_plus_unc2_list
+table_4.add_variable(expCLs_p2sig)
+
+expCLs_m2sig = Variable("Expected CLs - $2\sigma$", is_independent=False, is_binned=False, units="")
+expCLs_m2sig.values = expCLs_median_minus_unc2_list
+table_4.add_variable(expCLs_m2sig)
 
 # add table    
 submission.add_table(table_4)
@@ -271,18 +307,30 @@ expCLs_un1_minus_list = [0.012509, 0.089144, 0.184963, 0.09408, 0.139239, 0.1768
 expCLs_un2_plus_list = [0.024523, 0.086373, 0.133599, 0.219656, 0.276432, 0.312457, 0.378907, 0.443139, 0.496105, 0.542083, 0.574258, 0.647796, 0.668167, 0.704716, 0.751599, 0.761267, 0.809038, 0.824082, 0.832866, 0.867173, 0.876772, 0.903264, 0.914225, 0.916174, 0.927006, 0.943927, 0.943028, 0.954366, 0.444435, 0.439671, 0.409087, 0.378018, 0.38959, 0.354248, 0.351035, 0.329383, 0.313498, 0.292677, 0.27628, 0.274662, 0.265205, 0.230534, 0.231149, 0.230129, 0.195617, 0.19852, 0.171743, 0.172614, 0.176293, 0.161555, 0.14076, 0.142668, 0.134139, 0.129309, 0.122885, 0.116322, 0.098643, 0.101021, 0.090273, 0.087507, 0.080147, 0.073928, 0.065017, 0.058516, 0.071536, 0.060665, 0.055239, 0.045082, 0.051382, 0.045795, 0.043628, 0.040833, 0.038723, 0.04134, 0.037049, 0.039703, 0.037803, 0.033056, 0.029168, 0.025889, 0.029626, 0.024213, 0.022979, 0.020464, 0.017604, 0.012487, 0.014379, 0.014222, 0.014938, 0.013816, 0.011261, 0.009009, 0.008806, 0.009877, 0.007162, 0.007675, 0.010388, 0.007011, 0.006141, 0.005015, 0.008798]
 expCLs_un2_minus_list = [0.037759, 0.132107, 0.235186, 0.215297, 0.288448, 0.319735, 0.316241, 0.333565, 0.335343, 0.346506, 0.321008, 0.236278, 0.248792, 0.237556, 0.216078, 0.20563, 0.168445, 0.158622, 0.129321, 0.132326, 0.114513, 0.091058, 0.08113, 0.080159, 0.071593, 0.055172, 0.052392, 0.044634, 0.045922, 0.041171, 0.028024, 0.028855, 0.026688, 0.019302, 0.015783, 0.014184, 0.011659, 0.013387, 0.01074, 0.010374, 0.009567, 0.005865, 0.0055, 0.006219, 0.003316, 0.005375, 0.003451, 0.002163, 0.002389, 0.002759, 0.001529, 0.00239, 0.000582, 0.002607, 0.000936, 0.001009, 0.000615, 0.000843, 0.000603, 0.000348, 0.00098, 0.000415, 0.000526, 0.001045, 0, 0.000624, 0.000378, 0.000557, 0.000249, 0.000355, 0.000328, 0, 0.000219, 0, 0, 0, 0.000468, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
+expCLs_median_plus_unc1_list = [m + u for m, u in zip(expCLs_list, expCLs_un1_plus_list)]
+expCLs_median_minus_unc1_list = [m - u for m, u in zip(expCLs_list, expCLs_un1_minus_list)]
+expCLs_median_plus_unc2_list = [m + u for m, u in zip(expCLs_list, expCLs_un2_plus_list)]
+expCLs_median_minus_unc2_list = [m - u for m, u in zip(expCLs_list, expCLs_un2_minus_list)]
+
 expCLs = Variable("Expected CLs", is_independent=False, is_binned=False, units="")
 expCLs.values = expCLs_list
-
-expCLs_unc1 = Uncertainty("1 sigma", is_symmetric=False)
-expCLs_unc1.values = [(-m, p) for m, p in zip(expCLs_un1_minus_list, expCLs_un1_plus_list)]
-expCLs.add_uncertainty(expCLs_unc1)
-
-expCLs_unc2 = Uncertainty("2 sigma", is_symmetric=False)
-expCLs_unc2.values = [(-m, p) for m, p in zip(expCLs_un2_minus_list, expCLs_un2_plus_list)]
-expCLs.add_uncertainty(expCLs_unc2)
-
 table_5.add_variable(expCLs)
+
+expCLs_p1sig = Variable("Expected CLs + $1\sigma$", is_independent=False, is_binned=False, units="")
+expCLs_p1sig.values = expCLs_median_plus_unc1_list
+table_5.add_variable(expCLs_p1sig)
+
+expCLs_m1sig = Variable("Expected CLs - $1\sigma$", is_independent=False, is_binned=False, units="")
+expCLs_m1sig.values = expCLs_median_minus_unc1_list
+table_5.add_variable(expCLs_m1sig)
+
+expCLs_p2sig = Variable("Expected CLs + $2\sigma$", is_independent=False, is_binned=False, units="")
+expCLs_p2sig.values = expCLs_median_plus_unc2_list
+table_5.add_variable(expCLs_p2sig)
+
+expCLs_m2sig = Variable("Expected CLs - $2\sigma$", is_independent=False, is_binned=False, units="")
+expCLs_m2sig.values = expCLs_median_minus_unc2_list
+table_5.add_variable(expCLs_m2sig)
 
 # add table    
 submission.add_table(table_5)
