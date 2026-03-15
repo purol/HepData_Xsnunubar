@@ -20,7 +20,7 @@ submission.add_additional_resource("Combined likelihood in the HistFactory JSON 
 
 # ============================================== create table for post fit yield ============================================== #
 table_1 = Table("Postfit yields") # title for the table
-Caption_1 =" The bin index distribution after the fit, for data and histogram templates. The background templates are separated into 6 categories: charged $B$ meson decay, neutral $B$ meson decay, and four types of $e^{+}e^{-} \\rightarrow q\\bar{q}$ background~$\\left(q=u,d,s,c \\right)$."
+Caption_1 =" The bin index distribution after the fit, for data and histogram templates. The background templates are separated into 6 categories: charged $B$ meson decay, neutral $B$ meson decay, and four types of $e^{+}e^{-} \\rightarrow q\\bar{q}$ background $\\left(q=u,d,s,c \\right)$."
 table_1.description =  Caption_1 # add caption to the table
 table_1.location = "Figure 2 in PRL" # location figure table
 table_1.keywords["observables"] = ['signal yield'] # observable
@@ -103,7 +103,7 @@ submission.add_table(table_1)
 
 # ================================================= create table for CLs value ================================================= #
 table_2 = Table("Expected and observed limit 1") # title for the table
-Caption_2 =" $\\textrm{CL}{s}$ values as a function of the assumed branching fraction for $B \\rightarrow X{s} \\nu \\bar{\\nu}$ in the $0.0 < M_{X_{s}}^{\\textrm{true}} < 0.6~\\textrm{GeV}/c^{2}$ region. The red line indicates the 90\% confidence level upper limits."
+Caption_2 =" $\\textrm{CL}{s}$ values as a function of the assumed branching fraction for $B \\rightarrow X{s} \\nu \\bar{\\nu}$ in the $0.0 < M_{X_{s}}^{\\textrm{true}} < 0.6~\\textrm{GeV}/c^{2}$ region. The red line indicates the 90% confidence level upper limits."
 table_2.description =  Caption_2 # add caption to the table
 table_2.location = "Figure 2 top left in Supplemental Material" # location figure table
 table_2.keywords["phrases"]=['FCNC','$b \\rightarrow s\\nu\\bar\\nu$ transition','electroweak penguin decay','missing energy'] # phrases
@@ -150,7 +150,7 @@ submission.add_table(table_2)
 
 # ================================================= create table for CLs value ================================================= #
 table_3 = Table("Expected and observed limit 2") # title for the table
-Caption_3 =" $\\textrm{CL}{s}$ values as a function of the assumed branching fraction for $B \\rightarrow X{s} \\nu \\bar{\\nu}$ in the $0.6 < M_{X_{s}}^{\\textrm{true}} < 1.0~\\textrm{GeV}/c^{2}$ region. The red line indicates the 90\% confidence level upper limits."
+Caption_3 =" $\\textrm{CL}{s}$ values as a function of the assumed branching fraction for $B \\rightarrow X{s} \\nu \\bar{\\nu}$ in the $0.6 < M_{X_{s}}^{\\textrm{true}} < 1.0~\\textrm{GeV}/c^{2}$ region. The red line indicates the 90% confidence level upper limits."
 table_3.description =  Caption_3 # add caption to the table
 table_3.location = "Figure 2 top right in Supplemental Material" # location figure table
 table_3.keywords["phrases"]=['FCNC','$b \\rightarrow s\\nu\\bar\\nu$ transition','electroweak penguin decay','missing energy'] # phrases
@@ -197,7 +197,7 @@ submission.add_table(table_3)
 
 # ================================================= create table for CLs value ================================================= #
 table_4 = Table("Expected and observed limit 3") # title for the table
-Caption_4 =" $\\textrm{CL}{s}$ values as a function of the assumed branching fraction for $B \\rightarrow X{s} \\nu \\bar{\\nu}$ in the $1.0~\\textrm{GeV}/c^{2} < M_{X_{s}}^{\\textrm{true}}$ region. The red line indicates the 90\% confidence level upper limits."
+Caption_4 =" $\\textrm{CL}{s}$ values as a function of the assumed branching fraction for $B \\rightarrow X{s} \\nu \\bar{\\nu}$ in the $1.0~\\textrm{GeV}/c^{2} < M_{X_{s}}^{\\textrm{true}}$ region. The red line indicates the 90% confidence level upper limits."
 table_4.description =  Caption_4 # add caption to the table
 table_4.location = "Figure 2 bottom left in Supplemental Material" # location figure table
 table_4.keywords["phrases"]=['FCNC','$b \\rightarrow s\\nu\\bar\\nu$ transition','electroweak penguin decay','missing energy'] # phrases
@@ -244,7 +244,7 @@ submission.add_table(table_4)
 
 # ================================================= create table for CLs value ================================================= #
 table_5 = Table("Expected and observed limit 4") # title for the table
-Caption_5 =" $\\textrm{CL}{s}$ values as a function of the assumed branching fraction for $B \\rightarrow X{s} \\nu \\bar{\\nu}$ in the entire $M_{X_{s}}^{\\textrm{true}}$ region. The red line indicates the 90\% confidence level upper limits."
+Caption_5 =" $\\textrm{CL}{s}$ values as a function of the assumed branching fraction for $B \\rightarrow X{s} \\nu \\bar{\\nu}$ in the entire $M_{X_{s}}^{\\textrm{true}}$ region. The red line indicates the 90% confidence level upper limits."
 table_5.description =  Caption_5 # add caption to the table
 table_5.location = "Figure 2 bottom right in Supplemental Material" # location figure table
 table_5.keywords["phrases"]=['FCNC','$b \\rightarrow s\\nu\\bar\\nu$ transition','electroweak penguin decay','missing energy'] # phrases
