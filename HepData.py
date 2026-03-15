@@ -85,14 +85,14 @@ table_1.add_variable(DDBAR_yield)
 # ssbar
 SSBAR_list = [100.790557, 108.106622, 10.288875, 9.628175, 6.931877, 15.018105, 14.288086, 11.809284, 8.778085, 5.422485, 51.733766, 43.264457, 15.696255, 17.674115, 8.121574]
 
-SSBAR_yield = Variable("Number of events from $d\\bar d$ backgrounds", is_independent=False, is_binned=False, units="")
+SSBAR_yield = Variable("Number of events from $s\\bar s$ backgrounds", is_independent=False, is_binned=False, units="")
 SSBAR_yield.values = SSBAR_list
 table_1.add_variable(SSBAR_yield)
 
 # ccbar
 CHARM_list = [121.083678, 108.493959, 10.266435, 9.610728, 3.661822, 27.522379, 27.807830, 15.542077, 16.308477, 4.670561, 103.231171, 81.155825, 26.321613, 17.869839, 7.182356]
 
-CHARM_yield = Variable("Number of events from $d\\bar d$ backgrounds", is_independent=False, is_binned=False, units="")
+CHARM_yield = Variable("Number of events from $c\\bar c$ backgrounds", is_independent=False, is_binned=False, units="")
 CHARM_yield.values = CHARM_list
 table_1.add_variable(CHARM_yield)
 
