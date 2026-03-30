@@ -1,0 +1,39 @@
+---
+additional_resources:
+- description: Created with hepdata_lib 0.20.0
+  location: https://doi.org/10.5281/zenodo.1217998
+- description: arXiv
+  location: http://arxiv.org/abs/arXiv:2511.10980
+- description: Combined likelihood in the HistFactory JSON format. mu_MXs1, mu_MXs2,
+    and mu_MXs3 are the signal branching fraction relative to its SM expectation in
+    the $0.0 < M_{X_{s}}^{\textrm{true}} < 0.6~\textrm{GeV}/c^{2}$, $0.6 < M_{X_{s}}^{\textrm{true}}
+    < 1.0~\textrm{GeV}/c^{2}$, and $1.0~\textrm{GeV}/c^{2} < M_{X_{s}}^{\textrm{true}}$
+    regions, respectively
+  location: histfactory.json
+comment: We report the first search for the flavor-changing neutral-current decays
+  $B \rightarrow X_{s} \nu \bar{\nu}$, where $X_{s}$ is a hadronic system with strangeness
+  equal to 1, in data collected with the Belle~II detector at the SuperKEKB asymmetric-energy
+  $e^+e^-$ collider.The data sample corresponds to an integrated luminosity of $365~\textrm{fb}^{-1}$
+  collected at the $\Upsilon(4S)$ resonance and $43~\textrm{fb}^{-1}$ collected at
+  a center-of-mass energy $60~\textrm{MeV}$ below resonance for estimation of $e^+e^-\to
+  q\bar{q}$ continuum background.One of the $B$ mesons from the $\Upsilon(4S) \to
+  B\bar{B}$ decay is fully reconstructed in a hadronic decay mode. The $B \to X_s
+  \nu \bar{\nu}$ decay is reconstructed with a sum-of-exclusives approach that uses
+  30 $X_s$ decay modes. This approach provides high sensitivity to the inclusive decay,
+  despite the presence of two undetected neutrinos.The search is performed in three
+  regions of the $X_{s}$ mass, $M_{X_{s}}^{\textrm{true}}$, chosen to separate contributions
+  from $K$, $K^{*}(892)$, and heavier strange final states.We do not observe a significant
+  signal and set upper limits at 90% confidence level on the partial branching fractions
+  for the regions $0.0 < M_{X_{s}}^{\textrm{true}} < 0.6~\textrm{GeV}/c^2$, $0.6 <
+  M_{X_{s}}^{\textrm{true}} < 1.0~\textrm{GeV}/c^2$, and $1.0~\textrm{GeV}/c^2 < M_{X_{s}}^{\textrm{true}}$
+  of $2.2 \times 10^{-5}$, $9.5 \times 10^{-5}$, and $31.2 \times 10^{-5}$, respectively.
+  Combining the three mass regions, we obtain the upper limit on the branching fraction,
+  $B(B \to X_s \nu \bar{\nu}) < 3.2 \times 10^{-4}$.
+data_license:
+  description: CC0 enables reusers to distribute, remix, adapt, and build upon the
+    material in any medium or format, with no conditions.
+  name: CC0
+  url: https://creativecommons.org/publicdomain/zero/1.0/
+record_ids:
+- id: 3083443
+  type: inspire

@@ -336,5 +336,79 @@ table_5.add_variable(expCLs_m2sig)
 submission.add_table(table_5)
 # ============================================================================================================================== #
 
+
+# =============================================== create table for fragmentation =============================================== #
+#table_6 = Table("Fragmentation of $X_{s}$") # title for the table
+#Caption_6 ="Distribution of the mass $M_{X_{s}}^{\\textrm{true}}$ of the $X_{s}$ system in signal simulation samples. The y-axis is given in arbitrary units."
+#table_6.description =  Caption_6 # add caption to the table
+#table_6.keywords["phrases"]=['FCNC','$b \\rightarrow s\\nu\\bar\\nu$ transition','electroweak penguin decay','missing energy'] # phrases
+#table_6.keywords["reactions"] = ['$B \\rightarrow X_{s}\\nu\\bar\\nu$'] # decay
+
+# ============================================================================================================================== #
+
+
+# =============================================== mapping MXs true to bin index ================================================ #
+table_7 = Table("Fraction of signal events") # title for the table
+Caption_7 ="Fraction of signal events in the $M_{X_{s}}^{\\textrm{true}}$-bin index plane before the fit. The uncertainty is the statistical uncertainty from the simulation sample. The values are normalized such that the sum over all values is unity."
+table_7.description =  Caption_7 # add caption to the table
+table_7.keywords["phrases"]=['FCNC','$b \\rightarrow s\\nu\\bar\\nu$ transition','electroweak penguin decay','missing energy'] # phrases
+table_7.keywords["reactions"] = ['$B \\rightarrow X_{s}\\nu\\bar\\nu$'] # decay
+
+# define list for for loop
+fractions_2d = [
+    [0.028032, 0.100948, 0.037776, 0.064825, 0.153102, 0.000744, 0.000574, 0.000734, 0.001296, 0.003401, 0.000665, 0.001043, 0.000951, 0.001742, 0.002239],
+    [0.022995, 0.047292, 0.010480, 0.012266, 0.015573, 0.015663, 0.022873, 0.025326, 0.043476, 0.088520, 0.001865, 0.002745, 0.002163, 0.003084, 0.003450],
+    [0.013084, 0.022722, 0.004335, 0.005873, 0.005922, 0.006802, 0.008498, 0.008096, 0.011326, 0.012391, 0.024866, 0.036444, 0.026499, 0.041269, 0.056030],
+]
+
+staterr_2d = [
+    [0.000643, 0.001217, 0.000745, 0.000977, 0.001522, 0.000103, 0.000089, 0.000102, 0.000134, 0.000221, 0.000095, 0.000117, 0.000113, 0.000153, 0.000178],
+    [0.000813, 0.001174, 0.000557, 0.000599, 0.000677, 0.000667, 0.000812, 0.000858, 0.001117, 0.001612, 0.000216, 0.000262, 0.000241, 0.000280, 0.000310],
+    [0.000428, 0.000587, 0.000260, 0.000306, 0.000315, 0.000349, 0.000393, 0.000373, 0.000455, 0.000493, 0.000598, 0.000739, 0.000613, 0.000784, 0.000916],
+]
+
+
+true_bin_labels = [
+    "0.0 < $M_{X_{s}}^{\\textrm{true}}$ < 0.6 GeV/$c^{2}$",
+    "0.6 \\leq $M_{X_{s}}^{\\textrm{true}}$ < 1.0 GeV/$c^{2}$",
+    "1.0 \\leq $M_{X_{s}}^{\\textrm{true}}$ < $m_{B}$",
+]
+
+x_values = []
+y_values = []
+z_values = []
+dz_values = []
+
+for i, true_bin in enumerate(true_bin_labels):
+    for fit_bin in range(1, 16):
+        x_values.append(true_bin)
+        y_values.append(fit_bin)
+        z_values.append(fractions_2d[i][fit_bin - 1])
+        dz_values.append(staterr_2d[i][fit_bin - 1])
+
+# MXs true bin
+ind_8 = Variable('$M_{X_{s}}^{\\textrm{true}}$ bin', is_independent=True, is_binned=False, units="") # independent variable
+ind_8.values = x_values
+print(ind_8.values)
+table_7.add_variable(ind_8)
+
+# bin index bin
+ind_9 = Variable('bin index', is_independent=True, is_binned=False, units="") # independent variable
+ind_9.values = y_values
+print(ind_9.values)
+table_7.add_variable(ind_9)
+
+stat = Uncertainty("stat")
+stat.is_symmetric = True
+stat.values = dz_values
+
+# add fractions
+fraction = Variable("Fraction of signal events", is_independent=False, is_binned=False, units="")
+fraction.values = z_values
+fraction.add_uncertainty(stat)
+table_7.add_variable(fraction)
+# ============================================================================================================================== #
+
+
 outdir = "output_submission"
 submission.create_files(outdir, remove_old=True)
