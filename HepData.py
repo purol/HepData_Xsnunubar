@@ -370,8 +370,8 @@ staterr_2d = [
 
 true_bin_labels = [
     "0.0 < $M_{X_{s}}^{\\textrm{true}}$ < 0.6 GeV/$c^{2}$",
-    "0.6 \\leq $M_{X_{s}}^{\\textrm{true}}$ < 1.0 GeV/$c^{2}$",
-    "1.0 \\leq $M_{X_{s}}^{\\textrm{true}}$ < $m_{B}$",
+    "0.6 $\leq$ $M_{X_{s}}^{\\textrm{true}}$ < 1.0 GeV/$c^{2}$",
+    "1.0 $\leq$ $M_{X_{s}}^{\\textrm{true}}$ < $m_{B}$",
 ]
 
 x_values = []
@@ -398,7 +398,7 @@ ind_9.values = y_values
 print(ind_9.values)
 table_7.add_variable(ind_9)
 
-stat = Uncertainty("stat")
+stat = Uncertainty("")
 stat.is_symmetric = True
 stat.values = dz_values
 
