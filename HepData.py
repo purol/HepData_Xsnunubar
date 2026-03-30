@@ -407,6 +407,9 @@ fraction = Variable("Fraction of signal events", is_independent=False, is_binned
 fraction.values = z_values
 fraction.add_uncertainty(stat)
 table_7.add_variable(fraction)
+
+# add table    
+submission.add_table(table_7)
 # ============================================================================================================================== #
 
 
