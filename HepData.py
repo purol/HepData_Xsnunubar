@@ -341,23 +341,19 @@ submission.add_table(table_5)
 table_6 = Table("Fragmentation of $X_{s}$") # title for the table
 Caption_6 ="Distribution of the mass $M_{X_{s}}^{\\textrm{true}}$ of the $X_{s}$ system in signal simulation samples. The values are given in arbitrary units. The uncertainty is the statistical uncertainty from the simulation sample. The values are normalized such that the sum over all bins and all fragmentation categories is unity."
 table_6.description =  Caption_6 # add caption to the table
+table_6.location = "" # location figure table
 table_6.keywords["phrases"]=['FCNC','$b \\rightarrow s\\nu\\bar\\nu$ transition','electroweak penguin decay','missing energy'] # phrases
 table_6.keywords["reactions"] = ['$B \\rightarrow X_{s}\\nu\\bar\\nu$'] # decay
 
 # BR in 1st region
 ind_6 = Variable('$M_{X_{s}}^{\\textrm{true}}$', is_independent=True, is_binned=True, units="GeV/$c^{2}$") # independent variable
 
+n_bins = 100
 start = 0.45
 step = 0.0305
-end = 3.5
-edges = []
-x = start
-while x < end:
-    edges.append(round(x, 4))
-    x += step
-edges.append(end)
 
-ind_6.values = [(edges[i], edges[i+1]) for i in range(len(edges)-1)]
+edges = [round(start + i * step, 4) for i in range(n_bins + 1)]
+ind_6.values = [(edges[i], edges[i+1]) for i in range(n_bins)]
 print(ind_6.values)
 table_6.add_variable(ind_6)
 
